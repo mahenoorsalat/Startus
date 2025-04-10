@@ -147,7 +147,7 @@ export default function Mainpage() {
           </div>
 
           <div className="mt-4">
-            <button className="bg-white shadow-md px-6 py-2 rounded flex items-center">
+            <button className="bg-white text-black shadow-md px-6 py-2 rounded flex items-center">
               Upload File <span className="ml-2">→</span>
             </button>
           </div>
@@ -171,8 +171,8 @@ export default function Mainpage() {
           ))}
 
           <div className="mt-16 flex flex-col items-center">
-            <div className="w-16 h-16 rounded-full bg-gray-100 border border-gray-300 flex items-center justify-center">
-              <svg viewBox="0 0 24 24" width="24" height="24">
+            <div className="w-16 h-16 text-black rounded-full bg-gray-100 border border-gray-300 flex items-center justify-center">
+              <svg viewBox="0 0 24 24" width="24" height="24" >
                 <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                   <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" />
                   <path d="M12 16a4 4 0 100-8 4 4 0 000 8z" />
