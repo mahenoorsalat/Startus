@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { FaFingerprint, FaLeaf } from 'react-icons/fa';
 import { FaFileAlt, FaRegTrashAlt, FaUpload } from 'react-icons/fa';  // Icons for file preview actions
+import { Eye, EyeOff } from "lucide-react";
+
 
 function Home() {
   const [email, setEmail] = useState('');
@@ -11,11 +13,16 @@ function Home() {
   const [file, setFile] = useState(null); // State for managing the uploaded file
   const [uploadDate, setUploadDate] = useState('');
   const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const toggleVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
 
   const handleContinue = (e) => {
     e.preventDefault();
 
-    if (email === 'user_7861@gmail.com' && password === 'user123') {
+    if (email === 'user_786@gmail.com' && password === 'user123') {
       router.push('/MainPage');
     } else {
       alert('Invalid credentials');
@@ -40,7 +47,7 @@ function Home() {
   };
 
   return (
-    <div className="min-h-screen text-green-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-white text-green-900 flex items-center justify-center p-4">
       <div className="w-full max-w-6xl grid md:grid-cols-2 gap-8">
         <div className="bg-gray-200 p-8 rounded-3xl border">
           <div className="flex items-center mb-6">
@@ -51,7 +58,7 @@ function Home() {
                 <path d="M12 8v-2M12 18v-2M8 12h-2M18 12h-2" />
               </g>
             </svg>
-            <h2 className="text-xl font-bold">Startus</h2>
+            <h2 className="text-xl font-bold">Stratus</h2>
           </div>
           <h1 className="text-2xl font-bold mb-2">Sign In</h1>
           <p className="text-gray-800 mb-6">Choose your role to continue</p>
@@ -67,16 +74,24 @@ function Home() {
             />
           </div>
 
-          <div className="mb-6">
-            <label className="block text-sm mb-2">Password</label>
-            <input
-              type="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 text-white"
-            />
-          </div>
+          <div className="mb-6 relative">
+      <label className="block text-sm mb-2">Password</label>
+      <input
+        type={showPassword ? "text" : "password"}
+        placeholder="Enter your password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        className="w-full p-3 pr-10 rounded-lg bg-gray-700 border border-gray-600 text-white"
+      />
+
+      {/* Eye Icon */}
+      <div
+        onClick={toggleVisibility}
+        className="absolute top-10 right-3 cursor-pointer text-gray-400 hover:text-white"
+      >
+        {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+      </div>
+    </div>
 
           <button
             onClick={handleContinue}
@@ -124,56 +139,9 @@ function Home() {
             </svg>
           </button>
 
-          <p className="mt-4 text-sm text-gray-600">
-            Don't have an account?{' '}
-            <button
-              onClick={() => (window.location.href = '/SignUp')}
-              className="text-green-500 hover:underline"
-            >
-              Sign Up
-            </button>
-          </p>
+      
 
-          {/* File Upload Section */}
-          <div className="mt-6">
-            <input
-              id="fileInput"
-              type="file"
-              onChange={handleFileChange}
-              className="hidden"
-            />
-            <button
-              onClick={() => document.getElementById('fileInput').click()}
-              className="w-full bg-gray-700 hover:bg-gray-600 text-white py-3 px-4 rounded-lg"
-            >
-              Upload File
-            </button>
-
-            {/* File Preview Section */}
-            {file && (
-              <div className="mt-4 bg-gray-100 p-4 rounded-lg border">
-                <div className="flex items-center">
-                  <FaFileAlt className="text-green-500 mr-2" />
-                  <div className="flex-1">
-                    <p className="font-semibold">{file.name}</p>
-                    <p className="text-sm text-gray-600">{uploadDate}</p>
-                  </div>
-                  <button
-                    onClick={handleDeleteFile}
-                    className="text-red-500 hover:text-red-700 ml-4"
-                  >
-                    <FaRegTrashAlt />
-                  </button>
-                  <button
-                    onClick={handleReuploadFile}
-                    className="text-blue-500 hover:text-blue-700 ml-2"
-                  >
-                    <FaUpload />
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
+        
         </div>
 
         {/* Right side - QR code */}
@@ -202,7 +170,7 @@ function Home() {
 
           <div className="flex items-center bg-gray-300 rounded-full px-4 py-2">
             <FaFingerprint className="text-green-500 mr-2" />
-            <span className="text-sm">https://www.Startus.com</span>
+            <span className="text-sm">https://www.Stratus.com</span>
           </div>
 
           <p className="mt-6 text-xs text-gray-400 text-center max-w-md">

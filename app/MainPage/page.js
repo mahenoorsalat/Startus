@@ -100,14 +100,28 @@ export default function Mainpage() {
                   </g>
                 </svg>
               </span>
-              Startus
+              Stratus
             </div>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center justify-center relative">
+      <main className="flex-1 bg-white flex flex-col items-center justify-center relative">
+      <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-full h-full absolute">
+            {[1, 2, 3, 4, 5].map((circle) => (
+              <div 
+                key={circle} 
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border border-gray-200 rounded-full"
+                style={{ 
+                  width: `${circle * 20}%`, 
+                  height: `${circle * 20}%`,
+                }}
+              />
+            ))}
+          </div>
+          </div>
         <div className="relative z-10 flex flex-col items-center">
           <div className="relative">
             <div className="w-32 h-32 rounded-full border-4 border-green-500 bg-white flex items-center justify-center relative overflow-hidden">
@@ -120,7 +134,7 @@ export default function Mainpage() {
                 }}
               />
               <div className="text-center">
-                <h2 className="text-gray-800 font-bold">Upload Files</h2>
+                <h2 className="text-gray-800 font-bold">Add Files</h2>
                 <p className="text-sm text-gray-600">Click Here</p>
               </div>
             </div>
@@ -134,7 +148,7 @@ export default function Mainpage() {
 
           <div className="mt-4">
             <button className="bg-white shadow-md px-6 py-2 rounded flex items-center">
-              Upload Folder <span className="ml-2">→</span>
+              Upload File <span className="ml-2">→</span>
             </button>
           </div>
 
@@ -170,7 +184,7 @@ export default function Mainpage() {
               <div className="text-sm text-gray-600">Online</div>
             </div>
             <p className="mt-2 text-sm text-gray-600">
-              Startus lets you share files with others. To get started, 
+              Stratus lets you share files with others. To get started, 
               <span className="font-bold"> upload some files</span>.
             </p>
           </div>
@@ -192,7 +206,7 @@ export default function Mainpage() {
                     </g>
                   </svg>
                 </span>
-                Startus
+                Stratus
               </div>
             </div>
             
